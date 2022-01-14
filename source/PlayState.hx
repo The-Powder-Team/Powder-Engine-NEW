@@ -2200,7 +2200,7 @@ class PlayState extends MusicBeatState
 
 			luaModchart.executeState('update', [elapsed]);
 
-			for (key => value in lua Wiggles)
+			for (key => value in luaModchart.luaWiggles)
 			{
 				trace('wiggle le gaming');
 				value.update(elapsed);
