@@ -80,6 +80,9 @@ import openfl.filters.ShaderFilter;
 #if FEATURE_DISCORD
 import Discord.DiscordClient;
 #end
+import hscript.Expr;
+import hscript.Parser;
+import hscript.Interp;
 
 using StringTools;
 
