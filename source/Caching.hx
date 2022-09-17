@@ -69,7 +69,7 @@ class Caching extends MusicBeatState
 		"documentation... sigh",
 		"Todokete",
 		"child.kill()",
-		"https://discord.gg/2vAAKtvMqW join the server"
+		"https://discord.gg/2vAAKtvMqW join the server",
 		"vs allany is fire /j",
 		"how come you call vs foxa bad it has some effort put into it",
 		"you know i've come to realize something\n\ni love putting something like this\nin my projects"
