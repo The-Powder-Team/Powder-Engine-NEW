@@ -123,12 +123,12 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
 
-		var versionShit1:FlxText = new FlxText(12, FlxG.height - 44, 0, "Powder Engine v" + powderEngineVersion, 12);
+		var versionShit1:FlxText = new FlxText(12, FlxG.height - 44, 0, "Powder Engine v" + powderEngineVer, 12);
 		versionShit1.scrollFactor.set();
 		versionShit1.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit1);
 
-		var versionShit2:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Kade Engine v' + kadeEngineVersion, 12);
+		var versionShit2:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Kade Engine v' + kadeEngineVer, 12);
 		versionShit2.scrollFactor.set();
 		versionShit2.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit2);
