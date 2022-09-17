@@ -420,8 +420,6 @@ class FreeplayState extends MusicBeatState
 		else if (charting)
 			loadSong(true);
 
-		// AnimationDebug and StageDebug are only enabled in debug builds.
-		#if debug
 		if (dadDebug)
 		{
 			loadAnimDebug(true);
@@ -430,7 +428,6 @@ class FreeplayState extends MusicBeatState
 		{
 			loadAnimDebug(false);
 		}
-		#end
 	}
 
 	function loadAnimDebug(dad:Bool = true)
