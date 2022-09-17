@@ -2399,7 +2399,6 @@ class PlayState extends MusicBeatState
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
-		#if debug
 		if (FlxG.keys.justPressed.SIX)
 		{
 			if (useVideo)
@@ -2513,7 +2512,6 @@ class PlayState extends MusicBeatState
 				});
 			}
 		}
-		#end
 
 		if (skipActive && Conductor.songPosition >= skipTo)
 		{
