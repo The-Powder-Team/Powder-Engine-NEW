@@ -558,6 +558,34 @@ class ShitMsOption extends Option
 	}
 }
 
+class RoundAccuracy extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function left():Bool
+	{
+		FlxG.save.data.roundAccuracy = !FlxG.save.data.roundAccuracy;
+
+		display = updateDisplay();
+		return true;
+	}
+
+	public override function right():Bool
+	{
+		left();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Round Accuracy: < " + (FlxG.save.data.roundAccuracy ? "on" : "off") + " >";
+	}
+}
+
 class CpuStrums extends Option
 {
 	public function new(desc:String)
@@ -1391,6 +1419,60 @@ class OffsetMenu extends Option
 	}
 }
 
+class BorderFps extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function left():Bool
+	{
+		FlxG.save.data.fpsBorder = !FlxG.save.data.fpsBorder;
+		display = updateDisplay();
+		return true;
+	}
+
+	public override function right():Bool
+	{
+		left();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "FPS Border: < " + (!FlxG.save.data.fpsBorder ? "off" : "on") + " >";
+	}
+}
+
+class DisplayMemory extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function left():Bool
+	{
+		FlxG.save.data.memoryDisplay = !FlxG.save.data.memoryDisplay;
+		display = updateDisplay();
+		return true;
+	}
+
+	public override function right():Bool
+	{
+		left();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Memory Display: < " + (!FlxG.save.data.memoryDisplay ? "off" : "on") + " >";
+	}
+}
+
 class OffsetThing extends Option
 {
 	public function new(desc:String)
@@ -1422,12 +1504,12 @@ class OffsetThing extends Option
 
 	private override function updateDisplay():String
 	{
-		return "Note offset: < " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 0) + " >";
+		return "Visual offset: < " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 0) + " >";
 	}
 
 	public override function getValue():String
 	{
-		return "Note offset: < " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 0) + " >";
+		return "Visual offset: < " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 0) + " >";
 	}
 }
 
@@ -1550,6 +1632,38 @@ class MiddleScrollOption extends Option
 	private override function updateDisplay():String
 	{
 		return "Middle Scroll: < " + (FlxG.save.data.middleScroll ? "Enabled" : "Disabled") + " >";
+	}
+}
+
+class RotateSpritesOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		if (OptionsMenu.isInPause)
+			description = "This option cannot be toggled in the pause menu.";
+		else
+			description = desc;
+	}
+
+	public override function left():Bool
+	{
+		if (OptionsMenu.isInPause)
+			return false;
+		FlxG.save.data.rotateSprites = !FlxG.save.data.rotateSprites;
+		display = updateDisplay();
+		return true;
+	}
+
+	public override function right():Bool
+	{
+		left();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Rotate Sprites: < " + (FlxG.save.data.rotateSprites ? "Enabled" : "Disabled") + " >";
 	}
 }
 
@@ -1815,6 +1929,7 @@ class ResetSettings extends Option
 		FlxG.save.data.flashing = null;
 		FlxG.save.data.resetButton = null;
 		FlxG.save.data.botplay = null;
+		FlxG.save.data.roundAccuracy = null;
 		FlxG.save.data.cpuStrums = null;
 		FlxG.save.data.strumline = null;
 		FlxG.save.data.customStrumLine = null;
