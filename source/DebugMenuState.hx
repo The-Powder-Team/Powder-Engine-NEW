@@ -72,7 +72,7 @@ class DebugMenuState extends MusicBeatState
 			switch (options[curSelected])
 			{
 				case 'Animation Debug':
-					LoadingState.loadAndSwitchState(new AnimationDebug(PlayState.boyfriend.curCharacter));
+					FlxG.switchState(new AnimationDebug(PlayState.boyfriend.curCharacter));
 				case 'Stage Debug':
 					FlxG.switchState(new StageDebugState(PlayState.Stage.curStage));
 				case 'Waveform Test':
