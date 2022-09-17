@@ -1889,11 +1889,14 @@ class PlayState extends MusicBeatState
 			if (FlxG.sound.music.playing)
 			{
 				FlxG.sound.music.pause();
-				if (vocals != null)
-					if (vocals.playing)
-						vocals.pause();
 			}
-
+			if (vocals != null)
+			{
+				if (vocals.playing)
+				{
+					vocals.pause();
+				};
+			}
 			#if FEATURE_DISCORD
 			DiscordClient.changePresence("PAUSED on "
 				+ SONG.song
