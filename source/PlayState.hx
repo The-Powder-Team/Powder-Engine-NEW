@@ -372,15 +372,15 @@ class PlayState extends MusicBeatState
 
 		Debug.logInfo('Searching for mod chart? ($executeModchart) at ${Paths.lua('songs/${PlayState.SONG.songId}/modchart')}');
 
-		/*if (sys.FileSystem.exists(Sys.getCwd() + 'assets/data/${SONG.song.toLowerCase()}/haxeModchart.hx'))
-			{
-				var expr = Paths.getHaxeScript(SONG.song.toLowerCase());
-				var parser = new hscript.Parser();
-				var ast = parser.parseString(expr);
-				var interp = new hscript.Interp();
-				trace(interp.execute(ast));
-		}*/
-		// prevented until fixed
+		if (sys.FileSystem.exists(Sys.getCwd() + 'assets/data/${SONG.song.toLowerCase()}/haxeModchart.hx'))
+		{
+			var expr = Paths.getHaxeScript(SONG.song.toLowerCase());
+			var parser = new hscript.Parser();
+			var ast = parser.parseString(expr);
+			var interp = new hscript.Interp();
+			trace(interp.execute(ast));
+		}
+		// oh god why prevent me sheesh
 		if (executeModchart)
 			songMultiplier = 1;
 
