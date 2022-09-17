@@ -56,7 +56,7 @@ class TitleState extends MusicBeatState
 			Debug.logTrace("We loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets into the default library");
 		}
 
-		FlxG.autoPause = false;
+		FlxG.autoPause = true;
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
