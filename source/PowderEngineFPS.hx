@@ -25,7 +25,7 @@ import openfl.Lib;
 @:fileXml('tags="haxe,release"')
 @:noDebug
 #end
-class KadeEngineFPS extends TextField
+class PowderEngineFPS extends TextField
 {
 	/**
 		The current frame rate, expressed using frames-per-second
@@ -113,7 +113,8 @@ class KadeEngineFPS extends TextField
 		{
 			text = (FlxG.save.data.fps ? "FPS: "
 				+ currentFPS
-				+ (Main.watermarks ? "\nKE " + "v" + MainMenuState.kadeEngineVer : "") : (Main.watermarks ? "KE " + "v" + MainMenuState.kadeEngineVer : ""));
+				+ (Main.watermarks ? "\nPE " + "v" + MainMenuState.powderEngineVer : "") : (Main.watermarks ? "PE " + "v" +
+					MainMenuState.powderEngineVer : ""));
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
