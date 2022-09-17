@@ -73,10 +73,10 @@ class Paths
 			return null;
 		}
 	}
-	
+
 	static public function getHaxeScript(string:String)
 	{
-		return Assets.getText('assets/data/$string/haxeModchart.hx');
+		return OpenFlAssets.getText('assets/data/$string/haxeModchart.hx');
 	}
 
 	static public function loadJSON(key:String, ?library:String):Dynamic
