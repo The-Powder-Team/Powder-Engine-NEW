@@ -40,6 +40,7 @@ class Caching extends MusicBeatState
 
 	var text:FlxText;
 	var kadeLogo:FlxSprite;
+	var tip:FlxText;
 
 	public static var bitmapData:Map<String, FlxGraphic>;
 
@@ -243,7 +244,7 @@ class Caching extends MusicBeatState
 
 		trace(OpenFlAssets.cache.hasBitmapData('GF_assets'));
 		#end
-		CustomTransition.switchTo(new SplashState());
+		FlxG.switchTo(new SplashState());
 	}
 }
 #end
