@@ -47,6 +47,34 @@ class Caching extends MusicBeatState
 	var music = [];
 	var charts = [];
 
+	var tips:Array<String> = [
+		"Note Skins are available!\nGo follow how the \"Swag\" skin does it!",
+		"If you can't see where the rating and the combo counter?\nTick \"Stationary Ratings\" in the Options Menu!\n(you can also change its' positions as well!)\n\n(if you don't see it, it's right below that option i just said)\n(it's called \"Change Rating and Combo positions\")",
+		"Never make an FNF engine\nworst mistake of my life",
+		"The wait will be worth it",
+		"Go pico\nyeah yeah",
+		"i'm in disarray",
+		"a dice, a diamond, and a skull.\nsomething weird about these, y'know?",
+		"my brother in christ\nyou made the sandwich",
+		"ah aaaaaah ah eh eh ih ou\nih ou ih ehhh", // liquated
+		"nice argument senator, why don't you back it up with a source?\n\n\n\n\n\nmy source is that i made it the fuck up",
+		"back in my day big 'ol bunny was the shit\n\n\nokay grandpa let's get you to bed",
+		"\"x and y or z\"\nwhat the fuck is this LUA\nshit aint even a native ternary operator\nit is but an imitation" +
+		(FlxG.random.bool() ? ", an impostor, perhaps" : "") + "\nlua please",
+		"while (true) {}",
+		"\"x ? y : z\"\nNOW THAT'S A TERNARY OPERATOR",
+		"imma be real this shit does nothing",
+		"wah",
+		"i wish i could add back \"Space to Hey!\" but i can't :(((((",
+		"documentation... sigh",
+		"Todokete",
+		"child.kill()",
+		"https://discord.gg/2vAAKtvMqW join the server"
+		"vs allany is fire /j",
+		"how come you call vs foxa bad it has some effort put into it",
+		"you know i've come to realize something\n\ni love putting something like this\nin my projects"
+	];
+
 	override function create()
 	{
 		FlxG.save.bind('funkin', 'ninjamuffin99');
@@ -120,6 +148,16 @@ class Caching extends MusicBeatState
 		var bar = new FlxBar(10, FlxG.height - 50, FlxBarFillDirection.LEFT_TO_RIGHT, FlxG.width, 40, null, "done", 0, toBeDone);
 		bar.color = FlxColor.PURPLE;
 
+		tip = new FlxText(0, 0, FlxG.width, "", 16);
+		tip.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		tip.y = bar.y - bar.height + 20;
+		tip.scrollFactor.set();
+		tip.alpha = 0;
+		tip.borderSize = 4;
+		add(tip);
+
+		tip.text = tips[FlxG.random.int(0, tips.length - 1)];
+
 		add(bar);
 
 		add(kadeLogo);
@@ -139,6 +177,7 @@ class Caching extends MusicBeatState
 					var alpha = HelperFunctions.truncateFloat(done / toBeDone * 100, 2) / 100;
 					kadeLogo.alpha = alpha;
 					text.alpha = alpha;
+					tip.alpha = alpha;
 					text.text = "Loading... (" + done + "/" + toBeDone + ")";
 				}
 			}
@@ -204,7 +243,7 @@ class Caching extends MusicBeatState
 
 		trace(OpenFlAssets.cache.hasBitmapData('GF_assets'));
 		#end
-		FlxG.switchState(new TitleState());
+		CustomTransition.switchTo(new SplashState());
 	}
 }
 #end

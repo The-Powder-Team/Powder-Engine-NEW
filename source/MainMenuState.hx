@@ -8,6 +8,7 @@ import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.gamepad.FlxGamepad;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -46,6 +47,7 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+	var camPos:FlxObject;
 
 	public static var finishedFunnyMove:Bool = false;
 
@@ -154,6 +156,10 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+
+		var lerp:Float = Helper.boundTo(elapsed * 9.2, 0, 1);
+		camPos.x = FlxMath.lerp(camPos.x, camFollow.x, lerp);
+		camPos.y = FlxMath.lerp(camPos.y, camFollow.y, lerp);
 
 		if (!selectedSomethin)
 		{
