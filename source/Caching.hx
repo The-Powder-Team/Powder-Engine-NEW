@@ -57,13 +57,13 @@ class Caching extends MusicBeatState
 		"a dice, a diamond, and a skull.\nsomething weird about these, y'know?",
 		"my brother in christ\nyou made the sandwich",
 		"ah aaaaaah ah eh eh ih ou\nih ou ih ehhh", // liquated
-		"nice argument senator, why don't you back it up with a source?\n\n\n\n\n\nmy source is that i made it the fuck up",
-		"back in my day big 'ol bunny was the shit\n\n\nokay grandpa let's get you to bed",
-		"\"x and y or z\"\nwhat the fuck is this LUA\nshit aint even a native ternary operator\nit is but an imitation" +
+		"nice argument senator, why don't you back it up with a source?\n\n\n\n\n\nmy source is that i made it the f-ck up",
+		"back in my day big 'ol bunny was the crap\n\n\nokay grandpa let's get you to bed",
+		"\"x and y or z\"\nwhat the f-ck is this LUA\ncrap aint even a native ternary operator\nit is but an imitation" +
 		(FlxG.random.bool() ? ", an impostor, perhaps" : "") + "\nlua please",
 		"while (true) {}",
 		"\"x ? y : z\"\nNOW THAT'S A TERNARY OPERATOR",
-		"imma be real this shit does nothing",
+		"imma be real this crap does nothing",
 		"wah",
 		"i wish i could add back \"Space to Hey!\" but i can't :(((((",
 		"documentation... sigh",
