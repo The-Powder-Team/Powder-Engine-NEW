@@ -1168,7 +1168,7 @@ class ChartingState extends MusicBeatState
 		var stepperCopy:FlxUINumericStepper = new FlxUINumericStepper(110, 132, 1, 1, -999, 999, 0);
 		var stepperCopyLabel = new FlxText(174, 132, 'sections back');
 
-		var copyButton:FlxButton = new FlxButton(10, 130, "Copy last section", function()
+		var copyButton:FlxButton = new FlxButton(10, 130, "Copy Last Section", function()
 		{
 			copySection(Std.int(stepperCopy.value));
 		});
@@ -1189,7 +1189,7 @@ class ChartingState extends MusicBeatState
 				}
 			}
 		});
-		check_mustHitSection = new FlxUICheckBox(10, 30, null, null, "Camera Points to Player?", 100, null, function()
+		check_mustHitSection = new FlxUICheckBox(10, 30, null, null, "Camera Points to BF?", 100, null, function()
 		{
 			var sect = lastUpdatedSection;
 
@@ -2808,7 +2808,7 @@ class ChartingState extends MusicBeatState
 
 				var sustainVis:FlxSprite = new FlxSprite(curSelectedNoteObject.x + (GRID_SIZE / 2),
 					curSelectedNoteObject.y + GRID_SIZE).makeGraphic(8,
-					Math.floor((getYfromStrum(curSelectedNoteObject.strumTime + curSelectedNote[2]) * zoomFactor) - curSelectedNoteObject.y));
+						Math.floor((getYfromStrum(curSelectedNoteObject.strumTime + curSelectedNote[2]) * zoomFactor) - curSelectedNoteObject.y));
 				curSelectedNoteObject.sustainLength = curSelectedNote[2];
 				Debug.logTrace("new sustain " + curSelectedNoteObject.sustainLength);
 				curSelectedNoteObject.noteCharterObject = sustainVis;

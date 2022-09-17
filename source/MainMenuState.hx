@@ -39,7 +39,8 @@ class MainMenuState extends MusicBeatState
 
 	public static var nightly:String = "";
 
-	public static var kadeEngineVer:String = "1.8.1" + nightly;
+	public static var powderEngineVer:String = "ALPHA-1";
+	public static var kadeEngineVer:String = "1.8.1-NIGHTLY";
 	public static var gameVer:String = "0.2.7.1";
 
 	var magenta:FlxSprite;
@@ -122,10 +123,15 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
+		var versionShit1:FlxText = new FlxText(12, FlxG.height - 44, 0, "Powder Engine v" + powderEngineVersion, 12);
+		versionShit1.scrollFactor.set();
+		versionShit1.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit1);
+
+		var versionShit2:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Kade Engine v' + kadeEngineVersion, 12);
+		versionShit2.scrollFactor.set();
+		versionShit2.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit2);
 
 		// NG.core.calls.event.logEvent('swag').send();
 
@@ -187,7 +193,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					fancyOpenURL("https://ninja-muffin24.itch.io/funkin");
+					fancyOpenURL("https://discord.gg/d4U2j7cYkB");
 				}
 				else
 				{
@@ -229,6 +235,13 @@ class MainMenuState extends MusicBeatState
 					});
 				}
 			}
+			#if desktop
+			else if (FlxG.keys.justPressed.SEVEN)
+			{
+				selectedSomethin = true;
+				FlxG.switchState(new DebugMenuState());
+			}
+			#end
 		}
 
 		super.update(elapsed);
