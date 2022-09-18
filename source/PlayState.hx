@@ -1548,9 +1548,10 @@ class PlayState extends MusicBeatState
 
 		if (needSkip)
 		{
+			trace("idc if you dont wanna skip just DO IT");
 			skipActive = true;
 			skipText = new FlxText(healthBarBG.x + 80, healthBarBG.y - 110, 500);
-			skipText.text = "Press Space to Skip Intro";
+			skipText.text = "Press SPACE to Skip Intro";
 			skipText.size = 30;
 			skipText.color = FlxColor.WHITE;
 			skipText.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 2, 1);
