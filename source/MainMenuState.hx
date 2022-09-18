@@ -29,7 +29,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'extras', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -200,7 +200,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					fancyOpenURL("https://discord.gg/d4U2j7cYkB");
+					FlxG.openURL('https://youtu.be/dQw4w9WgXcQ');
 				}
 				else
 				{
@@ -252,7 +252,6 @@ class MainMenuState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
 		menuItems.forEach(function(spr:FlxSprite)
 		{
 			spr.screenCenter(X);
@@ -272,7 +271,8 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new FreeplayState());
 
 				trace("Freeplay Menu Selected");
-
+			case 'extras':
+				FlxG.switchState(new ExtrasMenuState());
 			case 'options':
 				FlxG.switchState(new OptionsDirect());
 		}
