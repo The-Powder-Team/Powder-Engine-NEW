@@ -38,9 +38,9 @@ class CreditsMenu extends MusicBeatState
 	{
 		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
 
-		if (FileSystem.exists(Paths.modTxt('data/creditsList')) && FileSystem.exists(Paths.txt('data/creditsList')))
+		if (FileSystem.exists(Paths.txt('data/creditsList')) && FileSystem.exists(Paths.txt('data/creditsList')))
 		{
-			initCreditlist = File.getContent(Paths.modTxt('data/creditsList')).trim().split('\n');
+			initCreditlist = File.getContent(Paths.txt('data/creditsList')).trim().split('\n');
 
 			for (i in 0...initCreditlist.length)
 			{
@@ -152,7 +152,7 @@ class CreditsMenu extends MusicBeatState
 		}
 
 		if (controls.BACK)
-			MusicBeatState.switchState(new ExtrasMenuState());
+			FlxG.switchState(new ExtrasMenuState());
 	}
 
 	function changeSelection(change:Int = 0)
