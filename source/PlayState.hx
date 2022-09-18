@@ -2372,9 +2372,9 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		var iconLerp = 0.5;
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, iconLerp)));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, iconLerp)));
+		// var iconLerp = 0.5;
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.width, 150, Helper.boundTo(elapsed * 10, 0, 1))));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.width, 150, Helper.boundTo(elapsed * 10, 0, 1))));
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
@@ -4437,6 +4437,8 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	public var iconBeatFactor:Float = 30;
+
 	override function beatHit()
 	{
 		super.beatHit();
@@ -4488,22 +4490,11 @@ class PlayState extends MusicBeatState
 				camHUD.zoom += 0.03 / songMultiplier;
 			}
 		}
-		if (songMultiplier == 1)
-		{
-			iconP1.setGraphicSize(Std.int(iconP1.width + 45));
-			iconP2.setGraphicSize(Std.int(iconP2.width + 45));
+		iconP1.setGraphicSize(Std.int(iconP1.width + iconBeatFactor));
+		iconP2.setGraphicSize(Std.int(iconP2.width + iconBeatFactor));
 
-			iconP1.updateHitbox();
-			iconP2.updateHitbox();
-		}
-		else
-		{
-			iconP1.setGraphicSize(Std.int(iconP1.width + 4));
-			iconP2.setGraphicSize(Std.int(iconP2.width + 4));
-
-			iconP1.updateHitbox();
-			iconP2.updateHitbox();
-		}
+		iconP1.updateHitbox();
+		iconP2.updateHitbox();
 
 		if (!endingSong && currentSection != null)
 		{
