@@ -277,6 +277,7 @@ class PlayState extends MusicBeatState
 
 	// BotPlay text
 	private var botPlayState:FlxText;
+	var botplayTween:FlxTween;
 	// Replay shit
 	private var saveNotes:Array<Dynamic> = [];
 	private var saveJudge:Array<String> = [];
@@ -952,6 +953,8 @@ class PlayState extends MusicBeatState
 			add(botPlayState);
 
 		addedBotplay = PlayStateChangeables.botPlay;
+
+		botplayTween = FlxTween.tween(botPlayState, {alpha: 0}, Conductor.crochet / 1000, {ease: FlxEase.sineInOut, type: PINGPONG, loopDelay: 0.2});
 
 		iconP1 = new HealthIcon(boyfriend.curCharacter, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
