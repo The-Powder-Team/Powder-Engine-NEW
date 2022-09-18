@@ -22,7 +22,7 @@ using StringTools;
 import Discord.DiscordClient;
 #end
 
-class MainMenuState extends MusicBeatState
+class ExtrasMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
 
