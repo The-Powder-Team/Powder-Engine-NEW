@@ -22,13 +22,12 @@ class Notepad extends Sprite
 {
 	public var content:TextField;
 
-	var script:String;
-	var state:String;
+	var json:String;
 	var path:String;
 
 	var parser:Parser;
 
-	public function new(script:String, state:String, width:Int, height:Int, path:String)
+	public function new(json:String, width:Int, height:Int, path:String)
 	{
 		super();
 
@@ -37,8 +36,7 @@ class Notepad extends Sprite
 		parser.allowJSON = true;
 		parser.allowMetadata = true;
 
-		this.script = script;
-		this.state = state;
+		this.json = json;
 		this.path = path;
 
 		content = new TextField();
@@ -48,8 +46,8 @@ class Notepad extends Sprite
 		var a = new TextFormat("VCR OSD Mono", 22, 0xffffff);
 		a.align = TextFormatAlign.LEFT;
 		content.defaultTextFormat = a;
-		content.text = File.getContent(Paths.state(path));
-		// what the fuck are you???
+		content.text = File.getContent(Paths.charJson(path));
+		// what the flick are you???
 		content.text = content.text.replace("\r", "");
 		content.multiline = true;
 		content.type = TextFieldType.INPUT;
@@ -75,11 +73,11 @@ class Notepad extends Sprite
 			try
 			{
 				parse();
-				stage.window.title = "Powder Engine Script Editor";
+				stage.window.title = "Powder Engine Character JSON Editor";
 			}
 			catch (e:Dynamic)
 			{
-				stage.window.title = "Powder Engine Script Editor - [ERROR] " + e;
+				stage.window.title = "Powder Engine Character JSON Editor - [ERROR] " + e;
 			}
 		}
 	}
@@ -92,7 +90,7 @@ class Notepad extends Sprite
 	function onKey(k:KeyboardEvent)
 	{
 		if (k.keyCode == Keyboard.S && k.controlKey)
-			File.saveContent(Paths.state(path), content.text.toString().trim());
+			File.saveContent(Paths.charJson(path), content.text.toString().trim());
 
 		parseTime = 1.5;
 		parsed = false;
