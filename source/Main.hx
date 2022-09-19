@@ -11,6 +11,7 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import scripts.*;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;

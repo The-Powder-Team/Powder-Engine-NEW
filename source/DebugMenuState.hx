@@ -18,7 +18,7 @@ using StringTools;
 // took from psych because lazy
 class DebugMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Animation Debug', 'Stage Debug', 'Waveform Test',];
+	var options:Array<String> = ['Animation Debug', 'Stage Debug', 'Waveform Test', 'Notepad'];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 
 	private var curSelected = 0;
@@ -77,6 +77,8 @@ class DebugMenuState extends MusicBeatState
 					FlxG.switchState(new StageDebugState(PlayState.Stage.curStage));
 				case 'Waveform Test':
 					FlxG.switchState(new WaveformTestState());
+				case 'Notepad':
+					FlxG.switchState(new scripts.Notepad());
 			}
 			FlxG.sound.music.volume = 0;
 		}
