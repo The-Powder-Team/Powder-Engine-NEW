@@ -124,6 +124,10 @@ class OptionsMenu extends FlxSubState
 				new GhostTapOption("Toggle counting pressing a directional input when no arrow is there as a miss."),
 				new DownscrollOption("Toggle making the notes scroll down rather than up."),
 				new BotPlay("A bot plays for you!"),
+				new HitSoundVoume("Hitsound Volume", "Change how loud or soft the hitsound plays.", "hitsoundVolume", 0, 100, 0.1, 100, function()
+				{
+					FlxG.sound.play(Paths.sound("CLAP", "shared"), PlayStateChangeables.hitsoundVolume / 100);
+				}, 0, "%", 2),
 				#if desktop
 				new FPSCapOption("Change your FPS Cap."),
 				#end

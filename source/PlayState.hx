@@ -356,6 +356,7 @@ class PlayState extends MusicBeatState
 		PlayStateChangeables.botPlay = FlxG.save.data.botplay;
 		PlayStateChangeables.Optimize = FlxG.save.data.optimize;
 		PlayStateChangeables.zoom = FlxG.save.data.zoom;
+		PlayStateChangeables.hitsoundVolume = FlxG.save.data.hitsoundVolume;
 
 		removedVideo = false;
 
@@ -3909,6 +3910,15 @@ class PlayState extends MusicBeatState
 					goodNoteHit(daNote);
 				}
 			});
+		}
+
+		if (PlayStateChangeables.hitsoundVolume > 0)
+		{
+			for (key in pressArray)
+			{
+				if (key)
+					FlxG.sound.play(Paths.sound("CLAP", "shared"), PlayStateChangeables.hitsoundVolume / 100);
+			}
 		}
 
 		if ((KeyBinds.gamepad && !FlxG.keys.justPressed.ANY))
