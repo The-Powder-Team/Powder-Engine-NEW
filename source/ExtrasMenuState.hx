@@ -58,7 +58,7 @@ class ExtrasMenuState extends MusicBeatState
 		PlayState.inDaPlay = false;
 		#if FEATURE_DISCORD
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Extras Menus", null);
 		#end
 
 		if (!FlxG.sound.music.playing)
