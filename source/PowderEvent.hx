@@ -76,7 +76,7 @@ class PowderEvent
 		if (rawJson == null)
 			return null;
 
-		var swagShit:EventData = cast Json.parse(rawJson);
+		var swagShit:PowderEventData = cast Json.parse(rawJson);
 		return swagShit;
 	}
 }
