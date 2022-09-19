@@ -12,7 +12,7 @@ import sys.io.File;
 
 typedef PowderEventData =
 {
-	var events:Array<Array<EventNote>>; // WELL?!?!?!
+	var events:Array<Array<PowderEventNote>>; // WELL?!?!?!
 	/*
 		See "events json model.jsonc"
 	 */
