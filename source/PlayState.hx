@@ -1,5 +1,6 @@
 package;
 
+import PowderEvent;
 import Replay.Ana;
 import Replay.Analysis;
 import Section.SwagSection;
@@ -296,6 +297,11 @@ class PlayState extends MusicBeatState
 	public static var startTime = 0.0;
 
 	// API stuff
+	public static var EVENTS:Null<PowderEvent.PowderEventData>;
+
+	private var eventNotes:Array<PowderEvent.PowderEventNote> = [];
+
+	var loadedEventInterps:Map<String, Interp>;
 
 	public function addObject(object:FlxBasic)
 	{
