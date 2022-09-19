@@ -15,5 +15,5 @@ cocoa:parents-christmas:5
 eggnog:parents-christmas:5
 winter-horrorland:monster-christmas:5
 senpai:senpai:6
-roses:senpai:6
+roses:senpai-angry:6
 thorns:spirit:6
