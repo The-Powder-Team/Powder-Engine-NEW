@@ -21,7 +21,7 @@ typedef PowderEventData =
 typedef PowderEventNote =
 {
 	var strumTime:Float;
-	var events:Array<SwagEvent>;
+	var events:Array<PowderSwagEvent>;
 }
 
 // used in JSON file
@@ -34,7 +34,7 @@ typedef PowderEventInfo =
 typedef PowderSwagEvent =
 {
 	var eventID:String; // the event ID for the game and folder name
-	var params:Array<EventParam>; // array of params to be parsed in the charter
+	var params:Array<PowderEventParam>; // array of params to be parsed in the charter
 }
 
 typedef PowderEventParam =
@@ -50,7 +50,7 @@ typedef PowderEventParam =
 
 class PowderEvent
 {
-	public static function load(folder:String, ?mod:String = ""):EventData
+	public static function load(folder:String, ?mod:String = ""):PowderEventData
 	{
 		var folderLowercase = StringTools.replace(folder, " ", "-").toLowerCase();
 
@@ -71,7 +71,7 @@ class PowderEvent
 		return parseJSON(rawJson);
 	}
 
-	public static function parseJSON(rawJson:Null<String>):Null<EventData>
+	public static function parseJSON(rawJson:Null<String>):Null<PowderEventData>
 	{
 		if (rawJson == null)
 			return null;
