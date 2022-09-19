@@ -755,43 +755,6 @@ class AccuracyOption extends Option
 	}
 }
 
-class HitSoundVoume extends Option
-{
-	var theNumber:String;
-	var min:Float;
-	var max:Float;
-	var increment:Float;
-	var shiftMultiplier:Float;
-	var funneMultiplier:Float = 1;
-	var onChange:Void->Void;
-	var resetValue:Null<Float>;
-	var unit:String;
-	var precision:Int = 0;
-
-	public function new(display:String, desc:String, numberValueToChange:String, min:Float, max:Float, ?increment:Float = 1.0, ?shiftMultiplier:Float = 1.0,
-			?onChange:Void->Void, ?resetValue:Null<Float> = null, ?unit:String = '', ?precision:Int = 0)
-	{
-		super(display, desc);
-
-		theNumber = numberValueToChange;
-		this.min = min;
-		this.max = max;
-		this.increment = increment;
-		this.shiftMultiplier = shiftMultiplier;
-		this.onChange = onChange;
-		this.resetValue = resetValue;
-		this.unit = unit;
-		this.precision = precision;
-
-		display = updateDisplay();
-	}
-
-	private override function updateDisplay():String
-	{
-		return "Hitsound Volume: < " + HelperFunctions.truncateFloat(FlxG.save.data.hitsoundVolume, 1) + " >";
-	}
-}
-
 class SongPositionOption extends Option
 {
 	public function new(desc:String)
@@ -1967,7 +1930,6 @@ class ResetSettings extends Option
 		FlxG.save.data.resetButton = null;
 		FlxG.save.data.botplay = null;
 		FlxG.save.data.roundAccuracy = null;
-		FlxG.save.data.hitsoundVolume = null;
 		FlxG.save.data.cpuStrums = null;
 		FlxG.save.data.strumline = null;
 		FlxG.save.data.customStrumLine = null;
