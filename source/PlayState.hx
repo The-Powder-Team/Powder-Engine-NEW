@@ -1,46 +1,9 @@
 package;
 
-import flixel.util.FlxSpriteUtil;
-#if FEATURE_LUAMODCHART
-import LuaClass.LuaCamera;
-import LuaClass.LuaCharacter;
-import LuaClass.LuaNote;
-#end
-import lime.media.openal.AL;
-import Song.Event;
-import openfl.media.Sound;
-#if FEATURE_STEPMANIA
-import smTools.SMFile;
-#end
-#if FEATURE_FILESYSTEM
-import sys.io.File;
-import Sys;
-import sys.FileSystem;
-#end
-import openfl.ui.KeyLocation;
-import openfl.events.Event;
-import haxe.EnumTools;
-import openfl.ui.Keyboard;
-import openfl.events.KeyboardEvent;
 import Replay.Ana;
 import Replay.Analysis;
-#if FEATURE_WEBM
-import webm.WebmPlayer;
-#end
-import flixel.input.keyboard.FlxKey;
-import haxe.Exception;
-import openfl.geom.Matrix;
-import openfl.display.BitmapData;
-import openfl.utils.AssetType;
-import lime.graphics.Image;
-import flixel.graphics.FlxGraphic;
-import openfl.utils.AssetManifest;
-import openfl.utils.AssetLibrary;
-import lime.app.Application;
-import lime.media.AudioContext;
-import lime.media.AudioManager;
-import openfl.Lib;
 import Section.SwagSection;
+import Song.Event;
 import Song.SongData;
 import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
@@ -57,9 +20,11 @@ import flixel.addons.effects.FlxTrailArea;
 import flixel.addons.effects.chainable.FlxEffectSprite;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.graphics.FlxGraphic;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
@@ -71,20 +36,57 @@ import flixel.ui.FlxBar;
 import flixel.util.FlxCollision;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
+import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
+import haxe.EnumTools;
+import haxe.Exception;
 import haxe.Json;
+import hscript.Expr;
+import hscript.Interp;
+import hscript.Parser;
+import lime.app.Application;
+import lime.graphics.Image;
+import lime.media.AudioContext;
+import lime.media.AudioManager;
+import lime.media.openal.AL;
+import openfl.Lib;
+import openfl.display.BitmapData;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
+import openfl.events.Event;
+import openfl.events.KeyboardEvent;
 import openfl.filters.ShaderFilter;
+import openfl.geom.Matrix;
+import openfl.media.Sound;
+import openfl.ui.KeyLocation;
+import openfl.ui.Keyboard;
+import openfl.utils.AssetLibrary;
+import openfl.utils.AssetManifest;
+import openfl.utils.AssetType;
+import scripts.ScriptConsole;
+
+using StringTools;
+
+#if FEATURE_LUAMODCHART
+import LuaClass.LuaCamera;
+import LuaClass.LuaCharacter;
+import LuaClass.LuaNote;
+#end
+#if FEATURE_STEPMANIA
+import smTools.SMFile;
+#end
+#if FEATURE_FILESYSTEM
+import Sys;
+import sys.FileSystem;
+import sys.io.File;
+#end
+#if FEATURE_WEBM
+import webm.WebmPlayer;
+#end
 #if FEATURE_DISCORD
 import Discord.DiscordClient;
 #end
-import hscript.Expr;
-import hscript.Parser;
-import hscript.Interp;
-
-using StringTools;
 
 class PlayState extends MusicBeatState
 {
