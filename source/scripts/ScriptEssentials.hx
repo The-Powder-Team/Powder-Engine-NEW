@@ -64,7 +64,6 @@ class ScriptEssentials
 		interp.variables.set("Ratings", Ratings);
 		interp.variables.set("DiffCalc", DiffCalc);
 		interp.variables.set("Paths", Paths);
-		interp.variables.set("Count", Count);
 		interp.variables.set("Boyfriend", Boyfriend);
 		interp.variables.set("Math", Math);
 		interp.variables.set("Note", Note);
@@ -85,7 +84,6 @@ class ScriptEssentials
 		{
 			return FlxColor.colorLookup.get(huh);
 		});
-		interp.variables.set("Options", Options);
 		interp.variables.set("FlxTextBorderStyle", {
 			NONE: FlxTextBorderStyle.NONE,
 			SHADOW: FlxTextBorderStyle.SHADOW,

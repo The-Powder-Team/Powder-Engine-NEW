@@ -77,8 +77,8 @@ class DebugMenuState extends MusicBeatState
 					FlxG.switchState(new StageDebugState(PlayState.Stage.curStage));
 				case 'Waveform Test':
 					FlxG.switchState(new WaveformTestState());
-				case 'Notepad':
-					FlxG.switchState(new scripts.Notepad());
+					/*case 'Notepad':
+						FlxG.switchState(new scripts.Notepad(Paths.json('dad.json'), window.width, window.height, scripts.Notepad.path)); cant do it rn */
 			}
 			FlxG.sound.music.volume = 0;
 		}
