@@ -2400,24 +2400,19 @@ class PlayState extends MusicBeatState
 
 		if (health > 2)
 			health = 2;
-		if (healthBar.percent < 20 && iconP1.lossIndex != -1 && iconP2.winningIndex != -1)
-		{
-			iconP1.animation.curAnim.curFrame = iconP1.lossIndex;
-			iconP2.animation.curAnim.curFrame = iconP2.winningIndex;
-		}
-		else if (healthBar.percent > 80 && iconP1.winningIndex != -1)
-		{
-			iconP1.animation.curAnim.curFrame = iconP1.winningIndex;
-			iconP2.animation.curAnim.curFrame = iconP2.lossIndex;
-		}
+		if (healthBar.percent < 20)
+			iconP1.animation.curAnim.curFrame = 1;
 		else
-		{
-			iconP1.animation.curAnim.curFrame = iconP1.neutralIndex;
-			iconP2.animation.curAnim.curFrame = iconP2.neutralIndex;
-		}
+			iconP1.animation.curAnim.curFrame = 0;
+
+		if (healthBar.percent > 80)
+			iconP2.animation.curAnim.curFrame = 1;
+		else
+			iconP2.animation.curAnim.curFrame = 0;
 
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
+
 		if (FlxG.keys.justPressed.SIX)
 		{
 			if (useVideo)
@@ -2426,6 +2421,7 @@ class PlayState extends MusicBeatState
 				remove(videoSprite);
 				removedVideo = true;
 			}
+
 			FlxG.switchState(new AnimationDebug(dad.curCharacter));
 			clean();
 			PlayState.stageTesting = false;
@@ -2439,6 +2435,7 @@ class PlayState extends MusicBeatState
 			}
 			#end
 		}
+
 		if (!PlayStateChangeables.Optimize)
 			if (FlxG.keys.justPressed.EIGHT && songStarted)
 			{
@@ -2468,7 +2465,6 @@ class PlayState extends MusicBeatState
 					remove(dad);
 					remove(gf);
 				});
-
 				FlxG.switchState(new StageDebugState(Stage.curStage, gf.curCharacter, boyfriend.curCharacter, dad.curCharacter));
 				clean();
 				FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -2481,6 +2477,7 @@ class PlayState extends MusicBeatState
 				}
 				#end
 			}
+
 		if (FlxG.keys.justPressed.ZERO)
 		{
 			FlxG.switchState(new AnimationDebug(boyfriend.curCharacter));
@@ -2496,6 +2493,7 @@ class PlayState extends MusicBeatState
 			}
 			#end
 		}
+
 		if (FlxG.keys.justPressed.TWO && songStarted)
 		{ // Go 10 seconds into the future, credit: Shadow Mario#9396
 			if (!usedTimeTravel && Conductor.songPosition + 10000 < FlxG.sound.music.length)
@@ -2519,6 +2517,7 @@ class PlayState extends MusicBeatState
 
 				FlxG.sound.music.time = Conductor.songPosition;
 				FlxG.sound.music.play();
+
 				vocals.time = Conductor.songPosition;
 				vocals.play();
 				new FlxTimer().start(0.5, function(tmr:FlxTimer)
@@ -2527,19 +2526,23 @@ class PlayState extends MusicBeatState
 				});
 			}
 		}
+
 		if (skipActive && Conductor.songPosition >= skipTo)
 		{
 			remove(skipText);
 			skipActive = false;
 		}
+
 		if (FlxG.keys.justPressed.SPACE && skipActive)
 		{
 			FlxG.sound.music.pause();
 			vocals.pause();
 			Conductor.songPosition = skipTo;
 			Conductor.rawPosition = skipTo;
+
 			FlxG.sound.music.time = Conductor.songPosition;
 			FlxG.sound.music.play();
+
 			vocals.time = Conductor.songPosition;
 			vocals.play();
 			FlxTween.tween(skipText, {alpha: 0}, 0.2, {
@@ -2550,6 +2553,7 @@ class PlayState extends MusicBeatState
 			});
 			skipActive = false;
 		}
+
 		if (startingSong)
 		{
 			if (startedCountdown)
@@ -2565,17 +2569,22 @@ class PlayState extends MusicBeatState
 			// Conductor.songPosition = FlxG.sound.music.time;
 			Conductor.songPosition += FlxG.elapsed * 1000;
 			Conductor.rawPosition = FlxG.sound.music.time;
+
 			// sync
+
 			/*@:privateAccess
 				{
 					FlxG.sound.music._channel.
 			}*/
 			songPositionBar = (Conductor.songPosition - songLength) / 1000;
+
 			currentSection = getSectionByTime(Conductor.songPosition);
+
 			if (!paused)
 			{
 				songTime += FlxG.game.ticks - previousFrameTime;
 				previousFrameTime = FlxG.game.ticks;
+
 				// Interpolation type beat
 				if (Conductor.lastSongPos != Conductor.songPosition)
 				{
@@ -2584,19 +2593,22 @@ class PlayState extends MusicBeatState
 					// Conductor.songPosition += FlxG.elapsed * 1000;
 					// trace('MISSED FRAME');
 				}
-				var curTime:Float = FlxG.sound.music.time / songMultiplier;
 
+				var curTime:Float = FlxG.sound.music.time / songMultiplier;
 				if (curTime < 0)
 					curTime = 0;
-				var secondsTotal:Int = Math.floor(((curTime - songLength) / 1000));
 
+				var secondsTotal:Int = Math.floor(((curTime - songLength) / 1000));
 				if (secondsTotal < 0)
 					secondsTotal = 0;
+
 				if (FlxG.save.data.songPosition)
 					songName.text = SONG.songName + ' (' + FlxStringUtil.formatTime((songLength - secondsTotal), false) + ')';
 			}
+
 			// Conductor.lastSongPos = FlxG.sound.music.time;
 		}
+
 		if (generatedMusic && currentSection != null)
 		{
 			// Make sure Girlfriend cheers only for certain songs
@@ -2706,15 +2718,16 @@ class PlayState extends MusicBeatState
 					}
 				}
 			}
+
 			#if FEATURE_LUAMODCHART
 			if (luaModchart != null)
 				luaModchart.setVar("mustHit", currentSection.mustHitSection);
 			#end
+
 			if (camFollow.x != dad.getMidpoint().x + 150 && !currentSection.mustHitSection)
 			{
 				var offsetX = 0;
 				var offsetY = 0;
-
 				#if FEATURE_LUAMODCHART
 				if (luaModchart != null)
 				{
@@ -2728,14 +2741,15 @@ class PlayState extends MusicBeatState
 					luaModchart.executeState('playerTwoTurn', []);
 				#end
 				// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
+
 				camFollow.x += dad.camFollow[0];
 				camFollow.y += dad.camFollow[1];
 			}
+
 			if (currentSection.mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100)
 			{
 				var offsetX = 0;
 				var offsetY = 0;
-
 				#if FEATURE_LUAMODCHART
 				if (luaModchart != null)
 				{
@@ -2744,6 +2758,7 @@ class PlayState extends MusicBeatState
 				}
 				#end
 				camFollow.setPosition(boyfriend.getMidpoint().x - 100 + offsetX, boyfriend.getMidpoint().y - 100 + offsetY);
+
 				#if FEATURE_LUAMODCHART
 				if (luaModchart != null)
 					luaModchart.executeState('playerOneTurn', []);
@@ -2759,20 +2774,25 @@ class PlayState extends MusicBeatState
 							camFollow.x = boyfriend.getMidpoint().x - 300;
 							camFollow.y = boyfriend.getMidpoint().y - 300;
 					}
+
 				camFollow.x += boyfriend.camFollow[0];
 				camFollow.y += boyfriend.camFollow[1];
 			}
 		}
+
 		if (camZooming)
 		{
 			if (FlxG.save.data.zoom < 0.8)
 				FlxG.save.data.zoom = 0.8;
+
 			if (FlxG.save.data.zoom > 1.2)
 				FlxG.save.data.zoom = 1.2;
+
 			if (!executeModchart)
 			{
 				FlxG.camera.zoom = FlxMath.lerp(Stage.camZoom, FlxG.camera.zoom, 0.95);
 				camHUD.zoom = FlxMath.lerp(FlxG.save.data.zoom, camHUD.zoom, 0.95);
+
 				camNotes.zoom = camHUD.zoom;
 				camSustains.zoom = camHUD.zoom;
 			}
@@ -2780,13 +2800,16 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.camera.zoom = FlxMath.lerp(Stage.camZoom, FlxG.camera.zoom, 0.95);
 				camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
+
 				camNotes.zoom = camHUD.zoom;
 				camSustains.zoom = camHUD.zoom;
 			}
 		}
+
 		FlxG.watch.addQuick("curBPM", Conductor.bpm);
 		FlxG.watch.addQuick("beatShit", curBeat);
 		FlxG.watch.addQuick("stepShit", curStep);
+
 		if (curSong == 'Fresh')
 		{
 			switch (curBeat)
@@ -2805,16 +2828,20 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new TitleState());
 			}
 		}
+
 		if (health <= 0 && !cannotDie)
 		{
 			if (!usedTimeTravel)
 			{
 				boyfriend.stunned = true;
+
 				persistentUpdate = false;
 				persistentDraw = false;
 				paused = true;
+
 				vocals.stop();
 				FlxG.sound.music.stop();
+
 				if (FlxG.save.data.InstantRespawn)
 				{
 					FlxG.switchState(new PlayState());
@@ -2823,6 +2850,7 @@ class PlayState extends MusicBeatState
 				{
 					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
+
 				#if FEATURE_DISCORD
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("GAME OVER -- "
@@ -2848,15 +2876,17 @@ class PlayState extends MusicBeatState
 		{
 			var resetBind = FlxKey.fromString(FlxG.save.data.resetBind);
 			var gpresetBind = FlxKey.fromString(FlxG.save.data.gpresetBind);
-
 			if ((FlxG.keys.anyJustPressed([resetBind]) || KeyBinds.gamepad && FlxG.keys.anyJustPressed([gpresetBind])))
 			{
 				boyfriend.stunned = true;
+
 				persistentUpdate = false;
 				persistentDraw = false;
 				paused = true;
+
 				vocals.stop();
 				FlxG.sound.music.stop();
+
 				if (FlxG.save.data.InstantRespawn)
 				{
 					FlxG.switchState(new PlayState());
@@ -2865,6 +2895,7 @@ class PlayState extends MusicBeatState
 				{
 					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
+
 				#if FEATURE_DISCORD
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("GAME OVER -- "
@@ -2880,9 +2911,11 @@ class PlayState extends MusicBeatState
 					+ " | Misses: "
 					+ misses, iconRPC);
 				#end
+
 				// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 			}
 		}
+
 		if (generatedMusic)
 		{
 			var holdArray:Array<Bool> = [controls.LEFT, controls.DOWN, controls.UP, controls.RIGHT];
@@ -3227,6 +3260,7 @@ class PlayState extends MusicBeatState
 				}
 			});
 		}
+
 		if (FlxG.save.data.cpuStrums)
 		{
 			cpuStrums.forEach(function(spr:StaticArrow)
@@ -3238,12 +3272,15 @@ class PlayState extends MusicBeatState
 				}
 			});
 		}
+
 		if (!inCutscene && songStarted)
 			keyShit();
+
 		#if debug
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+
 		super.update(elapsed);
 	}
 
@@ -4066,6 +4103,7 @@ class PlayState extends MusicBeatState
 	public static var webmHandler:WebmHandler;
 
 	public var playingDathing = false;
+
 	public var videoSprite:FlxSprite;
 
 	public function backgroundVideo(source:String) // for background videos
@@ -4245,6 +4283,7 @@ class PlayState extends MusicBeatState
 
 	var mashing:Int = 0;
 	var mashViolations:Int = 0;
+
 	var etternaModeScore:Int = 0;
 
 	function noteCheck(controlArray:Array<Bool>, note:Note):Void // sorry lol
@@ -4610,4 +4649,5 @@ class PlayState extends MusicBeatState
 			SONG = cleanedSong;
 		}
 	}
-} // u looked :O -ides
+}
+// u looked :O -ides
