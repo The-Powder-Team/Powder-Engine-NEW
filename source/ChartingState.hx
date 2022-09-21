@@ -186,6 +186,11 @@ class ChartingState extends MusicBeatState
 		lines = new FlxTypedGroup<FlxSprite>();
 		texts = new FlxTypedGroup<FlxText>();
 
+	        var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg.scrollFactor.set();
+		bg.color = 0xFF222222;
+		add(bg);
+		
 		TimingStruct.clearTimings();
 
 		if (PlayState.SONG != null)
