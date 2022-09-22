@@ -41,7 +41,7 @@ class MainMenuState extends MusicBeatState
 
 	public static var nightly:String = "";
 
-	public static var powderEngineVer:String = "0.1.1 - ALPHA 1";
+	public static var powderEngineVer:String = "0.1.2 - ALPHA 1";
 	public static var kadeEngineVer:String = "1.8.1-NIGHTLY";
 	public static var gameVer:String = "0.2.7.1";
 
