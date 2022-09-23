@@ -249,7 +249,7 @@ class ExtrasMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'credits':
-				FlxG.switchState(new CreditsMenu());
+				FlxG.switchState(new CreditsState());
 		}
 	}
 
