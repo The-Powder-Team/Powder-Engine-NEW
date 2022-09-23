@@ -1257,19 +1257,10 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
 				case 3:
 					var go:FlxSprite;
-					if (Stage.curStage.startsWith('school'))
-					{
-						go = new FlxSprite().loadGraphic('assets/images/' + introAlts[2]);
-						go.scrollFactor.set();
-						go.setGraphicSize(Std.int(go.width * CoolUtil.daPixelZoom));
-					}
-					else
-					{
-						go = new FlxSprite(0, 0);
-						go.frames = FlxAtlasFrames.fromSparrow('assets/images/UI/goAnim.png', 'assets/images/UI/goAnim.xml');
-						go.animation.addByPrefix('go', 'GO!!', 24, false);
-						go.scrollFactor.set();
-					}
+					go = new FlxSprite(0, 0);
+					go.frames = FlxAtlasFrames.fromSparrow('assets/shared/images/goAnim.png', 'assets/shared/images/goAnim.xml');
+					go.animation.addByPrefix('go', 'GO!!', 24, false);
+					go.scrollFactor.set();
 
 					if (SONG.noteStyle == 'pixel')
 						go.setGraphicSize(Std.int(go.width * CoolUtil.daPixelZoom));
@@ -1279,29 +1270,9 @@ class PlayState extends MusicBeatState
 					go.screenCenter();
 					add(go);
 
-					switch (Stage.curStage)
-					{
-						case 'schoolEvil':
-							FlxTween.tween(go, {"scale.x": 15, alpha: 0}, 25, {
-								onComplete: function(twn:FlxTween)
-								{
-									go.alpha = 1;
-									go.setGraphicSize(25, 25);
-									go.setPosition(boyfriend.x, boyfriend.y);
-								}
-							});
-						case 'school':
-							FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-								ease: FlxEase.cubeInOut,
-								onComplete: function(twn:FlxTween)
-								{
-									go.destroy();
-								}
-							});
-						default:
-							go.animation.play('go');
-							boyfriend.playAnim('hey', true);
-					}
+					go.animation.play('go');
+					boyfriend.playAnim('hey', true);
+					
 
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
 			}
