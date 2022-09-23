@@ -293,7 +293,8 @@ class CharacterEditor extends MusicBeatState
 	{
 		code = code + "\n" + "  ]" + "\n" + "}";
 		code.replace(",E", "hmm");
-		sys.io.File.saveContent("mods/" + modName.text + "/custom/custom_characters/" + charactername + ".json", code);
+		// sys.io.File.saveContent("mods/" + modName.text + "/custom/custom_characters/" + charactername + ".json", code);
+		sys.io.File.saveContent("assets/data/characters/" + charactername + ".json", code);
 		sys.io.File.saveContent("assets/data/characterList.txt", characterlisttxt + "\n" + charactername);
 	}
 }
