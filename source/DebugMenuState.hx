@@ -18,7 +18,13 @@ using StringTools;
 // took from psych because lazy
 class DebugMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Character Editor', 'Stage Editor', 'Credits Editor', 'Notepad'];
+	var options:Array<String> = [
+		'Character Editor',
+		'Stage Editor',
+		'Credits Editor',
+		'Notepad',
+		'Character Testing'
+	];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 
 	private var curSelected = 0;
@@ -75,6 +81,8 @@ class DebugMenuState extends MusicBeatState
 					FlxG.switchState(new editors.CharacterEditor());
 				case 'Stage Editor':
 					FlxG.switchState(new editors.StageEditor());
+				case 'Character Testing':
+					FlxG.switchState(new CharacterTestState());
 				case 'Credits Editor':
 					FlxG.switchState(new editors.CreditsEditor());
 				case 'Notepad':
