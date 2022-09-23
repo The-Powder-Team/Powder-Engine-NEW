@@ -194,51 +194,51 @@ class CreditsState extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 			changeSelection(-shiftMult);
-			// var contentt1:String = sys.io.File.getContent('assets/data/creditsColors/' + curSelected + '.txt');
-			/*if (contentt1 == "RED")
-				{
-					bg.color = FlxColor.RED;
-				}
-				if (contentt1 == "BROWN")
-				{
-					bg.color = FlxColor.BROWN;
-				}
-				if (contentt1 == "WHITE")
-				{
-					bg.color = FlxColor.WHITE;
-				}
-				if (contentt1 == "YELLOW")
-				{
-					bg.color = FlxColor.YELLOW;
-				}
-				if (contentt1 == "GREEN")
-				{
-					bg.color = FlxColor.GREEN;
-				}
-				if (contentt1 == "BLACK")
-				{
-					bg.color = FlxColor.BLACK;
-				}
-				if (contentt1 == "CYAN")
-				{
-					bg.color = FlxColor.CYAN;
-				}
-				if (contentt1 == "BLUE")
-				{
-					bg.color = FlxColor.BLUE;
-				}
-				if (contentt1 == "PINK")
-				{
-					bg.color = FlxColor.PINK;
-				}
-				if (contentt1 == "PURPLE")
-				{
-					bg.color = FlxColor.PURPLE;
-				}
-				if (contentt1 == "KAWAISPRITECOLOR")
-				{
-					bg.color = 0xFF757EFF;
-			}*/
+			var contentt1:String = sys.io.File.getContent('assets/data/creditsColors/' + curSelected + '.txt');
+			if (contentt1 == "RED")
+			{
+				bg.color = FlxColor.RED;
+			}
+			if (contentt1 == "BROWN")
+			{
+				bg.color = FlxColor.BROWN;
+			}
+			if (contentt1 == "WHITE")
+			{
+				bg.color = FlxColor.WHITE;
+			}
+			if (contentt1 == "YELLOW")
+			{
+				bg.color = FlxColor.YELLOW;
+			}
+			if (contentt1 == "GREEN")
+			{
+				bg.color = FlxColor.GREEN;
+			}
+			if (contentt1 == "BLACK")
+			{
+				bg.color = FlxColor.BLACK;
+			}
+			if (contentt1 == "CYAN")
+			{
+				bg.color = FlxColor.CYAN;
+			}
+			if (contentt1 == "BLUE")
+			{
+				bg.color = FlxColor.BLUE;
+			}
+			if (contentt1 == "PINK")
+			{
+				bg.color = FlxColor.PINK;
+			}
+			if (contentt1 == "PURPLE")
+			{
+				bg.color = FlxColor.PURPLE;
+			}
+			if (contentt1 == "KAWAISPRITECOLOR")
+			{
+				bg.color = 0xFF757EFF;
+			}
 		}
 		if (downP)
 		{
