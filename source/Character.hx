@@ -22,6 +22,8 @@ class Character extends FlxSprite
 	public var curCharacter:String = 'bf';
 	public var barColor:FlxColor;
 
+	var healthicon:Null<String>;
+
 	public var holdTimer:Float = 0;
 
 	public var replacesGF:Bool;
@@ -265,6 +267,7 @@ typedef CharacterData =
 	var asset:String;
 	var startingAnim:String;
 
+	var healthicon:Null<String>;
 	var ?charPos:Array<Int>;
 	var ?camPos:Array<Int>;
 	var ?camFollow:Array<Int>;

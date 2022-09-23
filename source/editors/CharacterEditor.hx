@@ -130,7 +130,7 @@ class CharacterEditor extends MusicBeatState
 			enabledchar = true;
 		});
 		player1DropDown.selectedLabel = selectedChar;
-		UI_box.add(player1DropDown);
+		ui_box.add(player1DropDown);
 
 		versionShit = new FlxText(5, FlxG.height - 18, 0,
 			"Controls - Zooms E/Q | Location Down/Up | Press M to Edit Character | Press T to Change Path | Press N to Create Character", 8);
