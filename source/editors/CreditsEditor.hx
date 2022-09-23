@@ -121,23 +121,21 @@ class CreditsEditor extends MusicBeatState
 
 		saveButtons = new FlxButton(9, 100, "Save", function()
 		{
-			/*
-				var fileDir:String = "assets/data/creditsList.txt";
-				File.append(fileDir, false);
+			var fileDir:String = "assets/data/creditsList.txt";
+			File.append(fileDir, false);
 
-				var names = new List<String>();
+			var names = new List<String>();
 
-				names.add(selec.text);
+			names.add(selec.text);
 
-				var output;
+			var output;
 
-				for (i in names)
-					{
-						output = File.append(fileDir, false);
-						output.writeString(i + "\n");
-						output.close();
-					}
-			 */
+			for (i in names)
+			{
+				output = File.append(fileDir, false);
+				output.writeString(i + "\n");
+				output.close();
+			}
 
 			sys.io.File.saveContent("assets/data/creditsColors/" + eventName2.text + ".txt", versionShit.text);
 			sys.io.File.copy("assets/images/credits/ExampleCredits.png", "assets/images/credits/" + selec.text + ".png");

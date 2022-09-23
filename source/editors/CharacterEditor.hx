@@ -132,7 +132,8 @@ class CharacterEditor extends MusicBeatState
 		player1DropDown.selectedLabel = selectedChar;
 		UI_box.add(player1DropDown);
 
-		versionShit = new FlxText(5, FlxG.height - 18, 0, "Controls - Zooms E/Q | Location Down/Up | Press M to create character", 12);
+		versionShit = new FlxText(5, FlxG.height - 18, 0,
+			"Controls - Zooms E/Q | Location Down/Up | Press M to Edit Character | Press T to Change Path | Press N to Create Character", 8);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -167,14 +168,22 @@ class CharacterEditor extends MusicBeatState
 		}
 		else
 		{
-			if (FlxG.keys.justPressed.M)
+			if (FlxG.keys.justPressed.N)
 			{
 				characterCreator();
+			}
+			if (FlxG.keys.justPressed.M)
+			{
+				ee2();
+			}
+			if (FlxG.keys.justPressed.T)
+			{
+				ee();
 			}
 		}
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
-			FlxG.switchState(new MainMenuState());
+			FlxG.switchState(new DebugMenuState());
 		}
 		super.update(elapsed);
 	}
@@ -254,8 +263,6 @@ class CharacterEditor extends MusicBeatState
 		UI_box2.add(eventNameHmm);
 		eventNameHmmSave = new FlxButton(99, 30, "Save", saveCharacter);
 		UI_box2.add(eventNameHmmSave);
-		modName = new FlxUIInputText(189, 30, 80, "Mod Name");
-		UI_box2.add(modName);
 	}
 
 	function addAnimation()
