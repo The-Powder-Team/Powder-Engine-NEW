@@ -64,7 +64,7 @@ class CharacterEditor extends MusicBeatState
 	// Characters
 	var char1:Character;
 	// UI_BOX
-	var UI_box:FlxUITabMenu;
+	var ui_box:FlxUITabMenu;
 	// Texts
 	var versionShit:FlxText;
 
@@ -99,13 +99,13 @@ class CharacterEditor extends MusicBeatState
 		FlxG.mouse.visible = true;
 		//---------------------------------
 		var tabs = [{name: "Character", label: 'Character'},];
-		UI_box = new FlxUITabMenu(null, tabs, true);
-		UI_box.scrollFactor.set();
-		UI_box.resize(300, 400);
-		UI_box.x = FlxG.width / 2 + 40;
-		UI_box.y = 20;
-		add(UI_box);
-		UI_box.x += 250;
+		ui_box = new FlxUITabMenu(null, tabs, true);
+		ui_box.scrollFactor.set();
+		ui_box.resize(300, 400);
+		ui_box.x = FlxG.width / 2 + 40;
+		ui_box.y = 20;
+		add(ui_box);
+		ui_box.x += 250;
 
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -221,7 +221,7 @@ class CharacterEditor extends MusicBeatState
 		add(eventName);
 	}
 
-	var UI_box2:FlxUITabMenu;
+	var ui_box2:FlxUITabMenu;
 	var eventNameHmm:FlxButton;
 	var eventNameHmm2:FlxButton;
 	var eventName2:FlxUIInputText;
@@ -252,17 +252,17 @@ class CharacterEditor extends MusicBeatState
 		add(bg);
 
 		var tabs2 = [{name: "Character", label: 'Character Maker'},];
-		UI_box2 = new FlxUITabMenu(null, tabs2, true);
-		UI_box2.scrollFactor.set();
-		UI_box2.resize(300, 400);
-		UI_box2.x = FlxG.width / 2 + 40;
-		UI_box2.y = 20;
-		add(UI_box2);
-		UI_box2.x += 250;
+		ui_box2 = new FlxUITabMenu(null, tabs2, true);
+		ui_box2.scrollFactor.set();
+		ui_box2.resize(300, 400);
+		ui_box2.x = FlxG.width / 2 + 40;
+		ui_box2.y = 20;
+		add(ui_box2);
+		ui_box2.x += 250;
 		eventNameHmm = new FlxButton(9, 30, "Add Animation", addAnimation);
-		UI_box2.add(eventNameHmm);
+		ui_box2.add(eventNameHmm);
 		eventNameHmmSave = new FlxButton(99, 30, "Save", saveCharacter);
-		UI_box2.add(eventNameHmmSave);
+		ui_box2.add(eventNameHmmSave);
 	}
 
 	function addAnimation()
