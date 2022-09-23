@@ -40,6 +40,8 @@ class CreditsEditorState extends MusicBeatState
 		bg.color = FlxColor.PINK;
 		add(bg);
 
+		FlxG.mouse.visible = true;
+
 		descBox = new AttachedSprite();
 		descBox.makeGraphic(1, 1, FlxColor.BLACK);
 		descBox.xAdd = -10;
@@ -47,7 +49,6 @@ class CreditsEditorState extends MusicBeatState
 		descBox.alphaMult = 0.6;
 		descBox.alpha = 0.6;
 		add(descBox);
-
 
 		var descText:FlxText = new FlxText(50, 600, 1180, "", 32);
 		descText.setFormat(Paths.font("muff.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -83,6 +84,4 @@ class CreditsEditorState extends MusicBeatState
 		if (controls.BACK)
 			FlxG.switchState(new CreditsState());
 	}
-
-	
 }

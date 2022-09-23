@@ -78,6 +78,8 @@ class CreditsEditor extends MusicBeatState
 		bg.color = FlxColor.PINK;
 		add(bg);
 
+		FlxG.mouse.visible = true;
+
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 

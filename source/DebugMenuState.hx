@@ -18,7 +18,7 @@ using StringTools;
 // took from psych because lazy
 class DebugMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Animation Debug', 'Stage Debug', 'Waveform Test', 'Notepad'];
+	var options:Array<String> = ['Character Editor', 'Stage Editor', 'Credits Editor', 'Notepad'];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 
 	private var curSelected = 0;
@@ -28,7 +28,7 @@ class DebugMenuState extends MusicBeatState
 		FlxG.camera.bgColor = FlxColor.BLACK;
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Debugging Main Menu", null);
+		DiscordClient.changePresence("Editors Main Menu", null);
 		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -71,12 +71,12 @@ class DebugMenuState extends MusicBeatState
 		{
 			switch (options[curSelected])
 			{
-				case 'Animation Debug':
-					FlxG.switchState(new AnimationDebug(PlayState.boyfriend.curCharacter));
-				case 'Stage Debug':
-					FlxG.switchState(new StageDebugState(PlayState.Stage.curStage));
-				case 'Waveform Test':
-					FlxG.switchState(new WaveformTestState());
+				case 'Character Editor':
+					FlxG.switchState(new editors.CharacterEditor());
+				case 'Stage Editor':
+					FlxG.switchState(new editors.StageEditor());
+				case 'Credits Editor':
+					FlxG.switchState(new editors.CreditsEditor());
 				case 'Notepad':
 					FlxG.switchState(new NotepadThing());
 			}

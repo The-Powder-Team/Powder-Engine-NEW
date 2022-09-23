@@ -104,6 +104,80 @@ class Paths
 		}
 	}
 
+	static public function loadCharacterJSON(key:String, ?library:String):Dynamic
+	{
+		var rawJson = OpenFlAssets.getText(Paths.jsonChar(key, library)).trim();
+
+		// Perform cleanup on files that have bad data at the end.
+		while (!rawJson.endsWith("}"))
+		{
+			rawJson = rawJson.substr(0, rawJson.length - 1);
+		}
+
+		try
+		{
+			// Attempt to parse and return the JSON data.
+			return Json.parse(rawJson);
+		}
+		catch (e)
+		{
+			Debug.logError("AN ERROR OCCURRED parsing a JSON file.");
+			Debug.logError(e.message);
+
+			// Return null.
+			return null;
+		}
+	}
+
+	static public function loadStageJson(key:String, ?library:String):Dynamic
+	{
+		var rawJson = OpenFlAssets.getText(Paths.jsonstage(key, library)).trim();
+
+		// Perform cleanup on files that have bad data at the end.
+		while (!rawJson.endsWith("}"))
+		{
+			rawJson = rawJson.substr(0, rawJson.length - 1);
+		}
+
+		try
+		{
+			// Attempt to parse and return the JSON data.
+			return Json.parse(rawJson);
+		}
+		catch (e)
+		{
+			Debug.logError("AN ERROR OCCURRED parsing a JSON file.");
+			Debug.logError(e.message);
+
+			// Return null.
+			return null;
+		}
+	}
+
+	/*static public function loadStateJson(key:String, ?library:String):Dynamic
+		{
+			var rawJson = OpenFlAssets.getText(Paths.jsonstate(key, library)).trim();
+
+			// Perform cleanup on files that have bad data at the end.
+			while (!rawJson.endsWith("}"))
+			{
+				rawJson = rawJson.substr(0, rawJson.length - 1);
+			}
+
+			try
+			{
+				// Attempt to parse and return the JSON data.
+				return Json.parse(rawJson);
+			}
+			catch (e)
+			{
+				Debug.logError("AN ERROR OCCURRED parsing a JSON file.");
+				Debug.logError(e.message);
+
+				// Return null.
+				return null;
+			}
+	}*/
 	static public function getLibraryPath(file:String, library = "preload")
 	{
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
@@ -139,6 +213,11 @@ class Paths
 		return getPath('$key.txt', TEXT, library);
 	}
 
+	inline static public function hx(key:String, ?library:String)
+	{
+		return getPath('$key.hx', TEXT, library);
+	}
+
 	inline static public function xml(key:String, ?library:String)
 	{
 		return getPath('data/$key.xml', TEXT, library);
@@ -154,6 +233,20 @@ class Paths
 		return getPath('data/characters/$key.json', TEXT, library);
 	}
 
+	inline static public function jsonChar(key:String, ?library:String)
+	{
+		return getPath('data/chaarcters/$key.json', TEXT, library);
+	}
+
+	inline static public function jsonstage(key:String, ?library:String)
+	{
+		return getPath('data/stages/$key.json', TEXT, library);
+	}
+
+	/*inline static public function jsonstate(key:String, ?library:String)
+		{
+			return getPath('data/states/$key.json', TEXT, library);
+	}*/
 	static public function sound(key:String, ?library:String)
 	{
 		return getPath('sounds/$key.$SOUND_EXT', SOUND, library);
