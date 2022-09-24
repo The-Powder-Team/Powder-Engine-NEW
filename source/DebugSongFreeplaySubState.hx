@@ -49,7 +49,7 @@ class DebugSongFreeplaySubState extends MusicBeatSubstate
 		}
 
 		songsToDisplay = allTheseSongsDude[curSection];
-		allTheseSongsDude = songArray;
+		// allTheseSongsDude = songArray;
 
 		for (i in songArray)
 		{
