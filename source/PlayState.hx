@@ -1258,8 +1258,8 @@ class PlayState extends MusicBeatState
 				case 3:
 					var go:FlxSprite;
 					go = new FlxSprite(0, 0);
-					go.frames = FlxAtlasFrames.fromSparrow('assets/shared/images/goAnim.png', 'assets/shared/images/goAnim.xml');
-					go.animation.addByPrefix('go', 'GO!!', 24, false);
+					go.frames = Paths.getSparrowAtlas('assets/shared/images/goAnim');
+					go.animation.addByPrefix('goMan', 'GO!!', 24, false);
 					go.scrollFactor.set();
 
 					if (SONG.noteStyle == 'pixel')
@@ -1270,9 +1270,8 @@ class PlayState extends MusicBeatState
 					go.screenCenter();
 					add(go);
 
-					go.animation.play('go');
+					go.animation.play('goMan');
 					boyfriend.playAnim('hey', true);
-					
 
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
 			}
