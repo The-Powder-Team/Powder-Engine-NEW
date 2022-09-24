@@ -190,6 +190,9 @@ class Song
 		if (songData.validScore == null)
 			songData.validScore = true;
 
+		if (songData.stage == null)
+			songData.stage = 'stage';
+
 		// Inject info from _meta.json.
 		var songMetaData:SongMeta = cast jsonMetaData;
 		if (songMetaData.name != null)
