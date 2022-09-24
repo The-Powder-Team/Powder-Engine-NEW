@@ -25,6 +25,15 @@ class DebugMenuState extends MusicBeatState
 		'Notepad',
 		'Character Testing'
 	];
+
+	public static var debugSongsData:Array<Dynamic> = [
+		// ['Nadalyn-Sings-Spookeez', 'Nadbattle', 'Nadders'],
+		// ['Start-Conjunction', 'Energy-Lights', 'Telegroove'],
+		['Ridge', 'Test']
+	];
+
+	var curDebugSong:Int = 1;
+
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 
 	private var curSelected = 0;
@@ -71,6 +80,11 @@ class DebugMenuState extends MusicBeatState
 		if (controls.BACK)
 		{
 			FlxG.switchState(new MainMenuState());
+		}
+
+		if (FlxG.keys.justPressed.G)
+		{
+			openSubState(new DebugSongFreeplaySubState(debugSongsData[curDebugSong]));
 		}
 
 		if (controls.ACCEPT)
