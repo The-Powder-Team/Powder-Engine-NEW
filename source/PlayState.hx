@@ -66,7 +66,7 @@ import openfl.utils.AssetLibrary;
 import openfl.utils.AssetManifest;
 import openfl.utils.AssetType;
 import scripts.ScriptConsole;
-import swf.SWF;
+//import swf.SWF;
 
 using StringTools;
 

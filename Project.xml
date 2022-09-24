@@ -127,6 +127,7 @@
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="linc_luajit" if="desktop"/>
+	<haxelib name="swf" if="FEATURE_SWF"/>
 	<haxelib name="hxvm-luajit" if="desktop"/>
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
@@ -202,6 +203,8 @@
   <haxedef name="FEATURE_STEPMANIA" if="desktop" />
   <!-- Defines whether the Thread class can be used. -->
   <haxedef name="FEATURE_MULTITHREADING" if="cpp" />
+  <!-- Use this for your mod if you want SWF movies as cutscenes to show up. -->
+  <haxedef name="FEATURE_SWF" if="windows" />
 
   <!-- Defines whether the Mods menu will display before launching. -->
   <haxedef name="FEATURE_MODCORE" if="desktop" />
