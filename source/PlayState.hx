@@ -1256,10 +1256,7 @@ class PlayState extends MusicBeatState
 					});
 					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
 				case 3:
-					var go:FlxSprite;
-					go = new FlxSprite(0, 0);
-					go.frames = Paths.getSparrowAtlas('assets/shared/images/goAnim');
-					go.animation.addByPrefix('goMan', 'GO!!', 24, false);
+					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.loadImage(introAlts[2], week6Bullshit));
 					go.scrollFactor.set();
 
 					if (SONG.noteStyle == 'pixel')
@@ -1269,10 +1266,13 @@ class PlayState extends MusicBeatState
 
 					go.screenCenter();
 					add(go);
-
-					go.animation.play('goMan');
-					boyfriend.playAnim('hey', true);
-
+					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							go.destroy();
+						}
+					});
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
 			}
 
