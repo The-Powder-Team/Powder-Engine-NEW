@@ -131,7 +131,7 @@ class Ratings
 			(!PlayStateChangeables.botPlay
 				|| PlayState.loadRep ? "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + // Score
 					(FlxG.save.data.accuracyDisplay ? // Accuracy Toggle
-						" | Combo Breaks:"
+						" | Misses:"
 						+ PlayState.misses
 						+ // 	Misses/Combo Breaks
 						" | Accuracy:"
